@@ -10,7 +10,7 @@ namespace PokemonAPI.Controllers
     public class PokemonController : ControllerBase
     {
         [HttpGet("ObtenerPorNombre/{nombre}")]
-        public async Task<PokemonDTO> ObtenerPorNombre(string nombre)
+        public async Task<PokemonDTO?> ObtenerPorNombre(string nombre)
         {
             var pokemon = new PokemonDTO();
 
