@@ -1,0 +1,10 @@
+# Ignore any files in /bin and /obj Folders
+**/bin/*
+**/obj/*
+
+# Ignore all files with the specified extension.
+# Scope is all repo folders.
+*.json
+
+.vs
+PokemonAPI.sln
