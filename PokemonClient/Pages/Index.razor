@@ -32,8 +32,6 @@
 
 <h1>¡Buscador de Pokémon!</h1>
 
-
-
 <input class="form-control" type="text" placeholder="Ingresa el nombre del pokemon" @bind-value=@nombrePokemon>
 <br/>
 <button type="button" class="btn btn-primary" @onclick="BuscarPokemon">Buscar</button>
@@ -74,10 +72,7 @@
         }
     }
 </div>
-
-
-
-
+s
 @code{
     string nombrePokemon { get; set; } = string.Empty;
     PokemonDTO? pokemon = new PokemonDTO();
@@ -102,7 +97,6 @@
             }
             buscando = false;
         }
-        
     }
 
 }

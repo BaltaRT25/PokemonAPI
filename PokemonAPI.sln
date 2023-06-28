@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonAPI", "PokemonAPI\Po
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonShared", "PokemonShared\PokemonShared.csproj", "{85A1F978-00F9-4EE6-876B-2047B6FC6934}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonClient", "PokemonClient\PokemonClient.csproj", "{226D7975-94AE-4D7A-A05E-3F64F4F28461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonClient", "PokemonClient\PokemonClient.csproj", "{226D7975-94AE-4D7A-A05E-3F64F4F28461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
