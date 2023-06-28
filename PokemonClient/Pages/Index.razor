@@ -50,21 +50,21 @@
             @if (pokemonEncontrado)
             {
 
-                        <div class="card">
-                            @if(!String.IsNullOrEmpty(pokemon.image))
-                            {
-                                <img src=@pokemon.image alt="Avatar" style="width:100%">
-                            }
+                <div class="card">
+                    @if(!String.IsNullOrEmpty(pokemon.image))
+                    {
+                        <img src=@pokemon.image alt="Avatar" style="width:100%">
+                    }
                             
-                            <div class="container">
-                                <h4><b>@pokemon.name</b></h4>
-                                <p>
-                                    <label><b>Id:</b></label> <label> @pokemon.id</label>
-                                    <label><b>weight:</b></label> <label> @pokemon.weight</label>
-                                    <label><b>height:</b></label> <label> @pokemon.height</label>
-                                </p>
-                            </div>
-                        </div>
+                    <div class="container">
+                        <h4><b>@pokemon.name</b></h4>
+                        <p>
+                            <label><b>Id:</b></label> <label> @pokemon.id</label>
+                            <label><b>weight:</b></label> <label> @pokemon.weight</label>
+                            <label><b>height:</b></label> <label> @pokemon.height</label>
+                        </p>
+                    </div>
+                </div>
             }
             else
             {
@@ -89,7 +89,7 @@
         if (!String.IsNullOrEmpty(nombrePokemon))
         {
             buscando = true;
-            pokemon = await Http.GetFromJsonAsync<PokemonDTO>($"https://localhost:7157/Pokemon/ObtenerPorNombre/{nombrePokemon.ToLower()}");
+            pokemon = await Http.GetFromJsonAsync<PokemonDTO>($"https://pokemonwebapi.azurewebsites.net/Pokemon/ObtenerPorNombre/{nombrePokemon.ToLower()}");
             muestraResultado = true;
 
             if (pokemon != null && pokemon.id != 0)
