@@ -1,0 +1,108 @@
+﻿@page "/"
+@using PokemonShared.DTO;
+@inject HttpClient Http
+@using System.Net.Http
+@inject HttpClient Http
+@using System.Net.Http.Json
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  
+  background-color: snow;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.contenedorPokemon{
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+}
+</style>
+
+<PageTitle>Index</PageTitle>
+
+<h1>Buscador de Pokémon!</h1>
+
+
+
+<input class="form-control" type="text" placeholder="Ingresa el nombre del pokemon" @bind-value=@nombrePokemon>
+<br/>
+<button type="button" class="btn btn-primary" @onclick="BuscarPokemon">Buscar</button>
+
+<div class="contenedorPokemon">
+    @if (buscando)
+    {
+        <div class="spinner-border"></div>
+    }
+    else
+    {
+        @if (muestraResultado)
+        {
+            @if (pokemonEncontrado)
+            {
+
+                        <div class="card">
+                            @if(!String.IsNullOrEmpty(pokemon.image))
+                            {
+                                <img src=@pokemon.image alt="Avatar" style="width:100%">
+                            }
+                            
+                            <div class="container">
+                                <h4><b>@pokemon.name</b></h4>
+                                <p>
+                                    <label><b>Id:</b></label> <label> @pokemon.id</label>
+                                    <label><b>weight:</b></label> <label> @pokemon.weight</label>
+                                    <label><b>height:</b></label> <label> @pokemon.height</label>
+                                </p>
+                            </div>
+                        </div>
+            }
+            else
+            {
+                        <p>No se encontró el pokemon que buscaste :(</p>
+            }
+
+        }
+    }
+</div>
+
+
+
+
+@code{
+    string nombrePokemon { get; set; } = string.Empty;
+    PokemonDTO? pokemon = new PokemonDTO();
+    bool muestraResultado = false;
+    bool pokemonEncontrado = true;
+    bool buscando = false;
+    private async Task BuscarPokemon()
+    {
+        if (!String.IsNullOrEmpty(nombrePokemon))
+        {
+            buscando = true;
+            pokemon = await Http.GetFromJsonAsync<PokemonDTO>($"https://localhost:7157/Pokemon/ObtenerPorNombre/{nombrePokemon.ToLower()}");
+            muestraResultado = true;
+
+            if (pokemon != null && pokemon.id != 0)
+            {
+                pokemonEncontrado = true;
+            }
+            else
+            {
+                pokemonEncontrado = false;
+            }
+            buscando = false;
+        }
+        
+    }
+
+}
